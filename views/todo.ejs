@@ -11,21 +11,24 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body>
         <h1>Todo</h1>
         <form action="/todos/addTodo" method="POST">
-            <input type="type" placeholder="Todo"  name="todoItem">
-            <input type="submit" value="Add Todo">
+            <input type="type" placeholder="Todo"  name="todoItem" class="w-64 py-2 px-3 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-400">
+            <input type="submit" value="Add Todo" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full shadow-md">
         </form>
         <ul>
             <% todos.forEach( el => { %>
                 <li data-id='<%=el.id%>'>
-                    <span><%= el.name %></span>
-                    <span class='del'> Delete </span>
+                    <span 
+                    class="<%= el.completed === true ? 'line-through completed' : 'no-underline not-completed' %> hover:text-gray-700 hover:font-semibold">
+                    <%= el.name %></span>
+                    <span class='del hover:text-red-500 hover:font-semibold'> Delete </span>
                 </li>
             <% }) %>    
         </ul>
-        <script src="" async defer></script>
+        <script src="/js/main.js" async defer></script>
     </body>
 </html>

@@ -19,5 +19,35 @@ module.exports = {
         }catch(err){
             console.log(err)
         }
+    },
+
+    completeTodo: async (req, res) =>{
+        try{
+            await Todo.completeTodo(req.body.completeID)
+            console.log('Todo has been completed')
+            res.json('Mark Complete')
+        }catch(err){
+            console.log(err)
+        }
+    },
+
+    unCompleteTodo: async (req, res) =>{
+        try{
+            await Todo.unCompleteTodo(req.body.unCompleteID)
+            console.log('Todo has been Un-Completed')
+            res.json('Mark UnComplete')
+        }catch(err){
+            console.log(err)
+        }
+    },
+
+    deleteTodo: async (req, res) =>{
+        try{
+            await Todo.deleteTodo(req.body.deleteID)
+            console.log('Todo Deleted!')
+            res.json('Todo Deleted')
+        }catch(err){
+            console.log(err)
+        }
     }
 }
